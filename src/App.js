@@ -1,23 +1,34 @@
-
 import './App.css';
 
+import LayoutNav from './layoutNav';
+
+
+
+
+
 function App() {
+
+
+  const container = {
+    width: '50%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    boxShadow: '1px 1px 10px 5px grey',
+    justifyContent: 'space-between',
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-     
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+
+      <LayoutNav/>
+      
+
+      
+
+
     </div>
   );
 }
