@@ -8,17 +8,13 @@ import {
 } from '@ant-design/icons';
 import { Layout, Menu, Space, Avatar } from 'antd';
 import React, { useState } from 'react';
-// import TableA from './TableA';
-// import TopBar from './TopBar';
-// import './layoutNav.css';
+
 import './layoutNav.css'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import LoginPage from './Route_pages/Login_Page';
-// import DropdownA from './DropdownA';
-// import ProjectsTable from './Projects';
-// import CreatePlanForm from './CreatePlanForm';
 import DropdownA from './Components/DropdownA';
-import CreatePlanForm from './Route_pages/CreatePlanForm'
+import CreatePlanForm from './Route_pages/CreatePlanForm';
+import ProjectsTable from './Route_pages/Projects'
 
 
 
@@ -32,7 +28,7 @@ const LayoutNav = () => {
     userName: 'luv'
   })
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   // //for setting user is logged in or not.
 
@@ -66,9 +62,9 @@ const LayoutNav = () => {
         <img style={{width: '30%', marginLeft: '32%', marginTop:'10%', marginBottom: '10%'}} alt="logo" src="https://i.pinimg.com/originals/1c/9e/e9/1c9ee902e36c1aa855da3acd71a7c888.png"/>
         <Menu
 
-          // onClick={({key})=>{
-          //   navigate(key);
-          // }}
+          onClick={({key})=>{
+            navigate(key);
+          }}
           theme="dark"
           mode="inline"
           defaultSelectedKeys={['1']}
@@ -142,7 +138,7 @@ const LayoutNav = () => {
               <Space>
                 <LoginPage setName={setUser} login={submitForm} />
               </Space>} />
-            {/* <Route path='/projects' element={<ProjectsTable/>}/> */}
+            <Route path='/projects' element={<ProjectsTable/>}/>
             <Route path='/createplan' element={<CreatePlanForm/>}/>
            
             

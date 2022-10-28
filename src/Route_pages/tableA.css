@@ -1,0 +1,11 @@
+th{
+    height: 0px;
+    display: none;
+}
+
+
+.parentClass .ant-table-pagination-right{
+
+    justify-content: center !important;
+
+}
