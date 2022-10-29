@@ -1,7 +1,7 @@
-import {combinedReducers} from "redux";
+import {combineReducers} from "redux";
 import { fetchedDataReducer } from "./dataReducer";
 
-const reducers = combinedReducers({
+const reducers = combineReducers({
     allData: fetchedDataReducer
 });
 
