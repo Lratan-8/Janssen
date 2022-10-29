@@ -9,7 +9,7 @@ const initialState = {
 export const fetchedDataReducer = (state = initialState, {type, payload}) =>{
     switch(type){
         case ActionTypes.FETCH_DATA:
-            return state;
+            return {...state, fetchedData: payload};
         default:
             return state;
     }

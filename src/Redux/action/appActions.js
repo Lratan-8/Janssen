@@ -1,7 +1,8 @@
 import {ActionTypes} from '../constants/actionTypes'
 
-export const setProducts = (products) =>{
+export const setProjects = (projects) =>{
     return {
-        type: ActionTypes.FETCH_DATA
+        type: ActionTypes.FETCH_DATA,
+        payload: projects
     }
 }

@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 // import {  fetchDataAsync, selectData } from '../store/landing.slice';
 import ProjectsCard from '../Components/ProjectsCard'
 import './projects.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { setProjects } from '../Redux/action/appActions';
 
 
 
@@ -28,6 +30,19 @@ const columns = [
 
 const TableB = () => {
 
+  
+
+
+  //to access the redux store we will use useSelector
+
+  const projects = useSelector((state) =>state);
+  console.log(projects.allData.fetchedData);
+
+
+  
+ //to dispatch the action we will use useDispatch
+ const dispatch  = useDispatch();
+
   const [size, setPageSize] = useState({pageSize: 10}); 
   const [currentPage, setcurrentPage] = useState(1)
 
@@ -45,11 +60,15 @@ const TableB = () => {
 
   const [data, setdata] = useState([]);
 
+ 
+
   let extractFunction = async () =>{
 
   let response = await fetch("https://run.mocky.io/v3/5a7eaf2e-552f-4462-85ef-1f82fb73d345");
   let result = await response.json();
-  setdata(result);
+  dispatch(setProjects(result));
+  setdata(projects.allData.fetchedData);
+  
 
 }
 
@@ -58,7 +77,9 @@ const TableB = () => {
   extractFunction();
  
    
- }, [])
+ }, []);
+
+
  
   // const array = useSelector(selectData);
 
