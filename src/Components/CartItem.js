@@ -5,8 +5,6 @@ import { AiOutlineDelete, AiOutlineCopy, AiOutlineEdit } from 'react-icons/ai';
 
 const CartItem = (props) => {
 
-    
-    console.log(props.cartData.date.format('MM/DD/YYYY'))
 
 
 

@@ -1,13 +1,26 @@
 import { PageHeader, Col, Row, Card, Avatar, Badge } from 'antd';
 import React, { useState } from 'react';
-import CartItem from '../Components/CartItem'
-import './CreatePlanForm.css'
-import MyForm from '../Components/MyForm'
+import CartItem from '../Components/CartItem';
+import './CreatePlanForm.css';
+import MyForm from '../Components/MyForm';
+import { useSelector } from 'react-redux';
+
+
 const CreatePlanForm = () => {
+
+
+    const data = useSelector((state) => state);
 
     const [formData, setformData] = useState([]);
 
     console.log(formData);
+
+
+
+   
+
+
+
 
     return (
 
@@ -34,18 +47,20 @@ const CreatePlanForm = () => {
                         </div>
 
 
-                        {(formData.length === 0) && <h1 style={{ color: 'grey' }}>No plans added yet</h1>}
+                        {(data.createdPlans.plansCart.length === 0) && <h1 style={{ color: 'grey' }}>No plans added yet</h1>}
 
 
 
                         <ul style={{ padding: 0, listStyle: 'none' }} >
-                            {formData.map((item) => {
+
+                            
+                            {(data.createdPlans.plansCart) && data.createdPlans.plansCart.map((item) => {
                                 return <li style={{ marginBottom: '5px' }} key={parseInt(item.counter+item.nOS+Math.random()+Math.random())}> <CartItem cartData={item} /></li>
                             })}
                         </ul>
 
 
-                        {(formData.length !== 0) && <button style={{width: '100%', backgroundColor: 'green', color: 'white', border: 'none', borderRadius: '5px'}}>Submit</button>}
+                        {(data.createdPlans.plansCart.length !== 0) && <button style={{width: '100%', backgroundColor: 'green', color: 'white', border: 'none', borderRadius: '5px'}}>Submit</button>}
 
 
 

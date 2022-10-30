@@ -1,7 +1,6 @@
 import { Table} from 'antd';
 import './tableA.css';
 import React, { useEffect, useState } from 'react';
-// import {  fetchDataAsync, selectData } from '../store/landing.slice';
 import ProjectsCard from '../Components/ProjectsCard'
 import './projects.css'
 import { useSelector } from 'react-redux';

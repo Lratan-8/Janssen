@@ -13,3 +13,10 @@ export const setTasks = (tasks) =>{
         payload: tasks
     }
 }
+
+export const setNewPlan = (plan) =>{
+    return{
+        type: ActionTypes.CREATE_PLAN,
+        payload: plan
+    }
+}

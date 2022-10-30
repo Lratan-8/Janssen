@@ -1,19 +1,56 @@
 import React,{useState} from 'react';
 import { Form, Input, InputNumber, Row, Collapse, DatePicker, Button } from 'antd';
-import RadioButton from './RadioButton'
+import RadioButton from './RadioButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { setNewPlan } from '../Redux/action/appActions';
+
+
 const MyForm = (props) => {
 
     const { Panel } = Collapse;
+    const dispatch = useDispatch();
+    let allPlans = [];
+    const data = useSelector((state) => state);
+
+
 
     const onSubmit = (e) => {
 
-        props.setData([...props.formData, e])
-    }
+        allPlans =[...data.createdPlans.plansCart,e]
+        dispatch(setNewPlan(allPlans));
+    };
 
-    const onChange = (e) => {
+
+
+
+    //
+
+
+    const [service, setservice] = useState('');
+    const [category, setCategory] = useState('')
+    const [workType, setworkType] = useState('')
+
+
+
+    const onChangeService = (e) => {
+
+        setservice(e.target.value);
+     
         console.log(`radio checked:${e.target.value}`);
     };
 
+    const onChangeCategory = (e) => {
+        
+        setCategory(e.target.value);
+     
+        console.log(`radio checked:${e.target.value}`);
+    };
+    const onChangeType = (e) => {
+
+        setworkType(e.target.value)
+     
+        console.log(`radio checked:${e.target.value}`);
+    };
     //can there  be a better option for this radioData without making it a state.
 
     const radioDataA = ['Creative', 'Production', 'Creative + Production', 'Migration'];
@@ -35,33 +72,33 @@ const MyForm = (props) => {
                     <Collapse style={{ width: '100%', border: 'none', backgroundColor: 'white' }}>
 
 
-                        <Panel header="Choose a Service type" key="1">
+                        <Panel header= {`Choose a Service type: ${service}`} key="1">
 
                             <Form.Item name="radioA">
 
-                                <RadioButton onChange={onChange} options={radioDataA}/>
+                                <RadioButton onChange={onChangeService} options={radioDataA}/>
 
                             </Form.Item>
 
                         </Panel>
 
 
-                        <Panel header="Choose a Channel Type" key="2">
+                        <Panel header= {`Choose Category: ${category}`} key="2">
 
 
                             <Form.Item name="radioB">
 
-                                <RadioButton onChange={onChange} options={radioDataB}/>
+                                <RadioButton onChange={onChangeCategory} options={radioDataB}/>
 
                             </Form.Item>
 
                         </Panel>
-                        <Panel header="Choose a Request Type" key="3">
+                        <Panel header= {`Choose New/Existing: ${workType}`} key="3">
 
 
                             <Form.Item name="radioC">
 
-                                <RadioButton onChange={onChange} options={radioDataC}/>
+                                <RadioButton onChange={onChangeType} options={radioDataC}/>
 
                             </Form.Item>
 
