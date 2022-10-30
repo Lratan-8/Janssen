@@ -31,14 +31,6 @@ const columns = [
 const TableB = () => {
 
   
-  
- //to dispatch the action we will use useDispatch
- const dispatch  = useDispatch();
-
- 
-
-
- 
 
 
   const [size, setPageSize] = useState({pageSize: 10}); 
@@ -57,13 +49,10 @@ const TableB = () => {
   };
 
 
- 
 
-  let extractFunction = async () =>{
+  let extractFunction = () =>{
 
-  let response = await fetch("https://run.mocky.io/v3/5a7eaf2e-552f-4462-85ef-1f82fb73d345");
-  let result = await response.json();
-  dispatch(setProjects(result));
+  
   setdata(projects.allData.fetchedData);
   
 

@@ -1,8 +1,10 @@
 import {combineReducers} from "redux";
 import { fetchedDataReducer } from "./dataReducer";
+import { fetchedTasksReducer } from "./taskReducer";
 
 const reducers = combineReducers({
-    allData: fetchedDataReducer
+    allData: fetchedDataReducer,
+    taskData: fetchedTasksReducer
 });
 
 

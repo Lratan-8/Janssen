@@ -6,3 +6,10 @@ export const setProjects = (projects) =>{
         payload: projects
     }
 }
+
+export const setTasks = (tasks) =>{
+    return{
+        type: ActionTypes.FETCH_TASKS,
+        payload: tasks
+    }
+}

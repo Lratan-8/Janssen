@@ -7,14 +7,16 @@ import {
   CalendarOutlined
 } from '@ant-design/icons';
 import { Layout, Menu, Space, Avatar } from 'antd';
-import React, { useState } from 'react';
-
+import React, { useState,useEffect } from 'react';
 import './layoutNav.css'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import LoginPage from './Route_pages/Login_Page';
 import DropdownA from './Components/DropdownA';
 import CreatePlanForm from './Route_pages/CreatePlanForm';
 import ProjectsTable from './Route_pages/Projects'
+import { useDispatch, useSelector } from 'react-redux';
+import { setProjects } from './Redux/action/appActions';
+import TopBar from './Components/TopBar';
 
 
 
@@ -24,10 +26,66 @@ const { Header, Sider, Content } = Layout;
 
 const LayoutNav = () => {
 
+//PART 1 TO EXTRACT THE TASKS
+
+const dispatchTasks = useDispatch();
+const tasks = useSelector((state) => state);
+console.log(tasks);
+
+
+//extract data from API
+let tasksExtract = async () =>{
+
+  let response = await fetch("https://run.mocky.io/v3/5a7eaf2e-552f-4462-85ef-1f82fb73d345");
+  let result = await response.json();
+  dispatch(setProjects(result));
+  // setdata(projects.allData.fetchedData);
+  
+
+};
+
+
+
+
+
+
+
+
+
+
+
+//PART 2 TO EXTACT THE PROJECTS
+
+ //to dispatch the action, we will use use useDispatch
+  const dispatch = useDispatch();
+  const projects = useSelector((state) => state);
+
+
+
+  //extract data from API
+  let extractFunction = async () =>{
+
+    let response = await fetch("https://run.mocky.io/v3/5a7eaf2e-552f-4462-85ef-1f82fb73d345");
+    let result = await response.json();
+    dispatch(setProjects(result));
+    // setdata(projects.allData.fetchedData);
+    
+  
+  };
+
+  useEffect(() => {
+
+    extractFunction();
+   
+  }, [])
+  
+  
+
   const [user, setUser] = useState({
     userName: 'luv'
   })
 
+  //to navigate through the routes
   const navigate = useNavigate();
 
   // //for setting user is logged in or not.
@@ -133,7 +191,7 @@ const LayoutNav = () => {
         >
           <Routes>
 
-            {/* <Route path='/' element={<div><TopBar /><TableA /></div>} /> */}
+            <Route path='/' element={<div><TopBar />{/*<TableA />*/}</div>} />
             <Route path='/loginPage' element={
               <Space>
                 <LoginPage setName={setUser} login={submitForm} />
