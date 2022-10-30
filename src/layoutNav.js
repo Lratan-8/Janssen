@@ -16,7 +16,9 @@ import CreatePlanForm from './Route_pages/CreatePlanForm';
 import ProjectsTable from './Route_pages/Projects'
 import { useDispatch, useSelector } from 'react-redux';
 import { setProjects } from './Redux/action/appActions';
+import { setTasks } from './Redux/action/appActions';
 import TopBar from './Components/TopBar';
+import TableA from './Route_pages/TableA';
 
 
 
@@ -28,19 +30,14 @@ const LayoutNav = () => {
 
 //PART 1 TO EXTRACT THE TASKS
 
-const dispatchTasks = useDispatch();
-const tasks = useSelector((state) => state);
-console.log(tasks);
-
 
 //extract data from API
 let tasksExtract = async () =>{
 
-  let response = await fetch("https://run.mocky.io/v3/5a7eaf2e-552f-4462-85ef-1f82fb73d345");
+  let response = await fetch("https://run.mocky.io/v3/246cd820-11d2-4434-ab64-65d10e7dd556");
   let result = await response.json();
-  dispatch(setProjects(result));
-  // setdata(projects.allData.fetchedData);
-  
+  dispatch(setTasks(result));
+
 
 };
 
@@ -58,8 +55,8 @@ let tasksExtract = async () =>{
 
  //to dispatch the action, we will use use useDispatch
   const dispatch = useDispatch();
-  const projects = useSelector((state) => state);
 
+ 
 
 
   //extract data from API
@@ -68,7 +65,7 @@ let tasksExtract = async () =>{
     let response = await fetch("https://run.mocky.io/v3/5a7eaf2e-552f-4462-85ef-1f82fb73d345");
     let result = await response.json();
     dispatch(setProjects(result));
-    // setdata(projects.allData.fetchedData);
+   
     
   
   };
@@ -76,6 +73,7 @@ let tasksExtract = async () =>{
   useEffect(() => {
 
     extractFunction();
+    tasksExtract();
    
   }, [])
   
@@ -191,7 +189,7 @@ let tasksExtract = async () =>{
         >
           <Routes>
 
-            <Route path='/' element={<div><TopBar />{/*<TableA />*/}</div>} />
+            <Route path='/' element={<div><TopBar /><TableA /></div>} />
             <Route path='/loginPage' element={
               <Space>
                 <LoginPage setName={setUser} login={submitForm} />

@@ -4,9 +4,7 @@ import React, { useEffect, useState } from 'react';
 // import {  fetchDataAsync, selectData } from '../store/landing.slice';
 import ProjectsCard from '../Components/ProjectsCard'
 import './projects.css'
-import { useDispatch, useSelector } from 'react-redux';
-import { setProjects } from '../Redux/action/appActions';
-
+import { useSelector } from 'react-redux';
 
 
 const columns = [

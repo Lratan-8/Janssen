@@ -1,8 +1,7 @@
 import { Table, Tag } from 'antd';
 import './tableA.css';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {  fetchDataAsync, selectData } from '../store/landing.slice';
+import React from 'react';
+import {  useSelector } from 'react-redux';
 
 
 
@@ -68,14 +67,10 @@ const TableA = () => {
 
 
 
-  const dispatch = useDispatch();  //helps in dispatching action to the reducer
-  useEffect(() => {
-
-    dispatch(fetchDataAsync());
+  const projects = useSelector((state) =>state);
+ 
+  const array = projects.taskData.fetchedTasks;
   
-    
-  }, []);
-  const array = useSelector(selectData);
 
   return <Table className='parentClass' style={{ width: '100%', justifyContent: 'center' }} pagination={{ pageSize: '4', }} columns={columns} dataSource={array} />;
 
