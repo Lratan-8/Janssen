@@ -31,17 +31,15 @@ const columns = [
 const TableB = () => {
 
   
-
-
-  //to access the redux store we will use useSelector
-
-  const projects = useSelector((state) =>state);
-  console.log(projects.allData.fetchedData);
-
-
   
  //to dispatch the action we will use useDispatch
  const dispatch  = useDispatch();
+
+ 
+
+
+ 
+
 
   const [size, setPageSize] = useState({pageSize: 10}); 
   const [currentPage, setcurrentPage] = useState(1)
@@ -58,7 +56,6 @@ const TableB = () => {
   
   };
 
-  const [data, setdata] = useState([]);
 
  
 
@@ -72,12 +69,21 @@ const TableB = () => {
 
 }
 
+
+
  useEffect(() => {
 
   extractFunction();
  
    
  }, []);
+
+  //to access the redux store we will use useSelector
+
+  const projects = useSelector((state) =>state);
+  const [data, setdata] = useState(projects.allData.fetchedData);
+
+
 
 
  
