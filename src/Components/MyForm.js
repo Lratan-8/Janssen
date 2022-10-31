@@ -18,6 +18,7 @@ const MyForm = (props) => {
 
         allPlans =[...data.createdPlans.plansCart,e]
         dispatch(setNewPlan(allPlans));
+        alert("New Plan added");
     };
 
 
@@ -61,10 +62,10 @@ const MyForm = (props) => {
         <>
             <Form onFinish={onSubmit} layout="vertical" autoComplete="off">
                 <Row style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Form.Item style={{ width: '60%' }} name="campaignName" label="Campaign Name">
+                    <Form.Item rules={[{required: true}]}style={{ width: '60%' }} name="campaignName" label="Campaign Name" >
                         <Input />
                     </Form.Item>
-                    <Form.Item style={{ width: '35%' }} name="trackBudget" label="Budget Tracking Reference">
+                    <Form.Item rules={[{required: true}]}style={{ width: '35%' }} name="trackBudget" label="Budget Tracking Reference">
                         <InputNumber style={{ width: '100%' }} />
                     </Form.Item>
                 </Row>
@@ -74,7 +75,7 @@ const MyForm = (props) => {
 
                         <Panel header= {`Choose a Service type: ${service}`} key="1">
 
-                            <Form.Item name="radioA">
+                            <Form.Item rules={[{required: true}]}name="radioA">
 
                                 <RadioButton onChange={onChangeService} options={radioDataA}/>
 
@@ -86,7 +87,7 @@ const MyForm = (props) => {
                         <Panel header= {`Choose Category: ${category}`} key="2">
 
 
-                            <Form.Item name="radioB">
+                            <Form.Item rules={[{required: true}]}name="radioB">
 
                                 <RadioButton onChange={onChangeCategory} options={radioDataB}/>
 
@@ -96,7 +97,7 @@ const MyForm = (props) => {
                         <Panel header= {`Choose New/Existing: ${workType}`} key="3">
 
 
-                            <Form.Item name="radioC">
+                            <Form.Item rules={[{required: true}]}name="radioC">
 
                                 <RadioButton onChange={onChangeType} options={radioDataC}/>
 
@@ -107,27 +108,27 @@ const MyForm = (props) => {
                 </Row>
                 <Row style={{ marginTop: '20px' }}>
 
-                    <Form.Item style={{ width: '40%' }} name="nOS" label="Number of Slides">
+                    <Form.Item rules={[{required: true}]}style={{ width: '40%' }} name="nOS" label="Number of Slides">
                         <InputNumber style={{ width: '100%' }} />
                     </Form.Item>
 
                 </Row>
 
                 <Row >
-                    <Form.Item style={{ width: '100%' }} name="comments" label="Comments :">
+                    <Form.Item rules={[{required: true}]}style={{ width: '100%' }} name="comments" label="Comments :">
                         <Input style={{ height: '100px' }} />
                         {/* use text area here */}
                     </Form.Item>
                 </Row>
 
                 <Row style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Form.Item style={{ width: '30%' }} name="date" label="Date">
+                    <Form.Item rules={[{required: true}]}style={{ width: '30%' }} name="date" label="Date">
                         <DatePicker style={{ width: '100%' }} />
                     </Form.Item>
-                    <Form.Item style={{ width: '30%' }} name="counter" label="Count">
+                    <Form.Item rules={[{required: true}]}style={{ width: '30%' }} name="counter" label="Count">
                         <InputNumber style={{ width: '100%' }} />
                     </Form.Item>
-                    <Form.Item style={{ width: '30%' }} name="owner" label="Plan Owner">
+                    <Form.Item rules={[{required: true}]}style={{ width: '30%' }} name="owner" label="Plan Owner">
                         <InputNumber style={{ width: '100%' }} />
                     </Form.Item>
                 </Row>
